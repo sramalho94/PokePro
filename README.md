@@ -8,7 +8,9 @@
 
 ## **_Description_**
 
-#### A Guide to help players beat in game Pokemon trainers
+### A Guide to help players beat in game Pokemon trainers
+
+### Look Up Enemy Trainers from Pokemon and get suggestions about how to beat their pokemon team
 
 ---
 
