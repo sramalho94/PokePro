@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
   Trainer.init(
     {
       name: {
-        type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
+        type: DataTypes.STRING
       },
       image: DataTypes.STRING
     },
