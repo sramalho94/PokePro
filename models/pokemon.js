@@ -9,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Pokemon.belongsToMany(models.Trainer, {
+        as: 'pokemon_team',
+        through: models.Team,
+        foreignKey: 'pokemon_id'
+      })
     }
   }
   Pokemon.init(
