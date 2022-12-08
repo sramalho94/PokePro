@@ -10,10 +10,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       pokemon_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'pokemons',
+          key: 'id'
+        }
       },
       trainer_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'trainers',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
