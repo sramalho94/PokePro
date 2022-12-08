@@ -19,7 +19,7 @@ module.exports = {
       },
       types: {
         allowNull: false,
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       createdAt: {
         allowNull: false,
