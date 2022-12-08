@@ -19,11 +19,15 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       image: DataTypes.STRING,
-      types: DataTypes.ARRAY
+      types: {
+        allowNull: false,
+        type: DataTypes.ARRAY
+      }
     },
     {
       sequelize,
-      modelName: 'Pokemon'
+      modelName: 'Pokemon',
+      tableName: 'pokemons'
     }
   )
   return Pokemon
