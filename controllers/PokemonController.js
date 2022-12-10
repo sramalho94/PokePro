@@ -66,7 +66,7 @@ const DeletePokemon = async (req, res) => {
   try {
     let pokemonId = parseInt(req.params.pokemon_id)
     await Pokemon.destroy({ where: { id: pokemonId } })
-    res.send({ message: `Delete pokemon with an id of ${pokemonId}` })
+    res.send({ message: `Deleted pokemon with an id of ${pokemonId}` })
   } catch (error) {
     throw error
   }
