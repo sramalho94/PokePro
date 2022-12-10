@@ -1,17 +1,10 @@
 const middleware = require('../middleware')
+const { User } = require('../models')
 const { Op } = require('sequelize')
 
 const GetUsers = async (req, res) => {
   try {
-    const users = await User.findAll({
-      include: [
-        {
-          model: Zodiac,
-          as: 'user_sign',
-          attributes: ['name', 'image', 'description']
-        }
-      ]
-    })
+    const users = await User.findAll({})
 
     res.send(users)
   } catch (error) {
@@ -56,6 +49,31 @@ const CreateUser = async (req, res) => {
   }
 }
 
+const LoginUser = async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        userName: req.body.userName
+      },
+      raw: true
+    })
+    if (
+      user &&
+      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+    ) {
+      let payload = {
+        id: user.id,
+        userName: user.userName
+      }
+      let token = middleware.createToken(payload)
+      return res.send({ user: payload, token })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
+  } catch (error) {
+    throw error
+  }
+}
+
 const DeleteUser = async (req, res) => {
   try {
     let userId = parseInt(req.params.id)
@@ -70,6 +88,19 @@ const CheckSession = (req, res) => {
   console.log(res.locals)
   const { payload } = res.locals
   res.send(payload)
+}
+
+const UpdateUser = async (req, res) => {
+  try {
+    let userId = parseInt(req.params.user_id)
+    let updatedUser = await User.update(req.body, {
+      where: { id: userId },
+      returning: true
+    })
+    res.send(updatedUser)
+  } catch (error) {
+    throw error
+  }
 }
 
 const UpdatePassword = async (req, res) => {
@@ -96,7 +127,9 @@ module.exports = {
   GetUserById,
   RegisterUser,
   CreateUser,
+  LoginUser,
   DeleteUser,
   CheckSession,
-  UpdatePassword
+  UpdatePassword,
+  UpdateUser
 }
