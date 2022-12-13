@@ -27,7 +27,8 @@ module.exports = (sequelize, DataTypes) => {
       types: {
         allowNull: false,
         type: DataTypes.ARRAY(DataTypes.STRING)
-      }
+      },
+      sprite: DataTypes.STRING
     },
     {
       sequelize,
