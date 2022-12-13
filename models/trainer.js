@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
         unique: true,
         type: DataTypes.STRING
       },
-      image: DataTypes.STRING
+      image: DataTypes.STRING,
+      sprite: DataTypes.STRING
     },
     {
       sequelize,
