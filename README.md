@@ -43,3 +43,25 @@
   - express
   - Sequelize
   - PostgreSQL
+
+---
+
+### **_Screenshots_**
+
+> #### **Home Page**
+
+![image](https://i.imgur.com/KHzfbsY.png)
+
+> #### **Team Page**
+
+![image](https://i.imgur.com/PY0Io9s.png)
+
+> #### **Edit User Info Page**
+
+![image](https://i.imgur.com/57IsNXc.png)
+
+---
+
+### **_Acknowledgements_**
+
+Throughout this process I was lucky to have the assistance of some very skilled software engineers. I'd like to thank Austin Taylor and John Jacobs for guiding me and helping me stay on task to meet MVP. Kalen Luciano was instrumental in helping me overcome several blockers. Ziquan Miao helped solidify my understanding of the sequelize documentation.
