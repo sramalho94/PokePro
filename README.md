@@ -30,7 +30,7 @@
 
 ## Frontend Deployment
 
-###[Heroku](https://pokepro-frontend.herokuapp.com/)
+### [Heroku](https://pokepro-frontend.herokuapp.com/)
 
 ## Backend Deployment
 
