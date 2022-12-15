@@ -24,7 +24,6 @@ const GetUserById = async (req, res) => {
 const RegisterUser = async (req, res) => {
   try {
     const { userName, image, password } = req.body
-    console.log(password)
     let passwordDigest = await middleware.hashPassword(password)
     const user = await User.create({
       userName,
@@ -85,7 +84,6 @@ const DeleteUser = async (req, res) => {
 }
 
 const CheckSession = (req, res) => {
-  console.log(res.locals)
   const { payload } = res.locals
   res.send(payload)
 }

@@ -28,7 +28,6 @@ const GetPokemonByTypes = async (req, res) => {
         let types = poke.types
         if (types.includes(pokemon_type)) {
           found_pokemon.push(poke)
-          console.log(found_pokemon)
         }
       })
       return res.status(200).json({ found_pokemon })
