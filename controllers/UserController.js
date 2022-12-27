@@ -125,13 +125,13 @@ const UpdateUser = async (req, res) => {
 // }
 const UpdatePassword = async (req, res) => {
   try {
-    const { oldPassword, newPassword, id } = req.body
-    const user = await User.findByPk(id)
+    const { oldPassword, newPassword } = req.body
+    const user = await User.findByPk(req.params.user_id)
     if (
       user &&
       (await middleware.comparePassword(
         user.dataValues.passwordDigest,
-        await middleware.hashPassword(oldPassword)
+        oldPassword
       ))
     ) {
       let passwordDigest = await middleware.hashPassword(newPassword)

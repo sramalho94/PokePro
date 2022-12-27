@@ -8,7 +8,7 @@ router.post('/login', controller.LoginUser)
 router.post('/register', controller.RegisterUser)
 
 router.post(
-  '/update/',
+  '/update',
   middleware.stripToken,
   middleware.verifyToken,
   controller.UpdatePassword
