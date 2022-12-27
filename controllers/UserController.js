@@ -110,7 +110,7 @@ const UpdatePassword = async (req, res) => {
       user &&
       (await middleware.comparePassword(
         user.dataValues.passwordDigest,
-        oldPassword
+        await middleware.hashPassword(oldPassword)
       ))
     ) {
       let passwordDigest = await middleware.hashPassword(newPassword)
