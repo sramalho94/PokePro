@@ -9,8 +9,8 @@ router.post('/register', controller.RegisterUser)
 
 router.put(
   '/update',
-  middleware.stripToken,
-  middleware.verifyToken,
+  // middleware.stripToken,
+  // middleware.verifyToken,
   controller.UpdatePassword
 )
 
