@@ -125,18 +125,21 @@ const UpdateUser = async (req, res) => {
 // }
 const UpdatePassword = async (req, res) => {
   try {
-    const { oldPassword, newPassword } = req.body
-    let userId = parseInt(req.params.user_id)
-    const user = await User.findByPk(userId)
-    const oldPasswordDigest = await middleware.hashPassword(oldPassword)
+    // const { oldPassword, newPassword } = req.body
+    // let userId = parseInt(req.params.user_id)
+
+    const user = await User.findOne({
+      where: { userName: req.body.userName }
+    })
+    // const oldPasswordDigest = await middleware.hashPassword(oldPassword)
     if (
       user &&
       (await middleware.comparePassword(
         user.dataValues.passwordDigest,
-        oldPasswordDigest
+        req.body.oldPasswordDigest
       ))
     ) {
-      let passwordDigest = await middleware.hashPassword(newPassword)
+      let passwordDigest = await middleware.hashPassword(req.body.newPassword)
       await user.update({ passwordDigest })
       return res.send({ status: 'Ok', payload: user })
     }
