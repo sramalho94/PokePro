@@ -7,7 +7,7 @@ router.get('/', controller.GetUsers)
 router.post('/login', controller.LoginUser)
 router.post('/register', controller.RegisterUser)
 
-router.post(
+router.put(
   '/update',
   middleware.stripToken,
   middleware.verifyToken,
