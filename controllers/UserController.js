@@ -101,50 +101,26 @@ const UpdateUser = async (req, res) => {
   }
 }
 
-// const UpdatePassword = async (req, res) => {
-//   try {
-//     let userId = parseInt(req.params.user_id)
-//     const { oldPassword, newPassword } = req.body
-//     const user = await User.findByPk(userId)
-//     console.log(user)
-//     console.log(oldPassword)
-//     console.log(newPassword)
-//     if (
-//       user &&
-//       (await middleware.comparePassword(
-//         user.dataValues.passwordDigest,
-//         await middleware.hashPassword(oldPassword)
-//       ))
-//     ) {
-//       let passwordDigest = await middleware.hashPassword(newPassword)
-//       await user.update({ passwordDigest })
-//       return res.send({ status: 'Ok', payload: user })
-//     }
-//     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
-//   } catch (error) {}
-// }
 const UpdatePassword = async (req, res) => {
   try {
-    // const { oldPassword, newPassword } = req.body
-    // let userId = parseInt(req.params.user_id)
-
     const user = await User.findOne({
-      where: { userName: req.body.userName }
+      where: { username: req.body.username }
     })
-    // const oldPasswordDigest = await middleware.hashPassword(oldPassword)
     if (
       user &&
       (await middleware.comparePassword(
         user.dataValues.passwordDigest,
-        req.body.oldPasswordDigest
+        req.body.oldPassword
       ))
     ) {
       let passwordDigest = await middleware.hashPassword(req.body.newPassword)
       await user.update({ passwordDigest })
-      return res.send({ status: 'Ok', payload: user })
+      return res.send({ status: 'Success', msg: 'Password updated' })
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
-  } catch (error) {}
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
 }
 
 module.exports = {
