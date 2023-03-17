@@ -52,8 +52,8 @@
 
 ## Getting Started with Docker Image
 
-- install Install Docker and Docker Compose.
-- `clone` the latest tag of the docker image from Dockerhub.
+- install Install Docker and Docker Compose
+- `clone` the github repository
 - `cd` into the directory
 - start the Docker Compose services by running `docker-compose up`
 
