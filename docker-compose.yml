@@ -1,27 +1,26 @@
 version: '3.8'
-
 services:
-  app:
-    build: .
+  pokepro-db:
+    image: postgres
     environment:
-      - PORT=3001
-      - POSTGRES_HOST=db
-      - POSTGRES_USER=myuser
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=pokepro_development
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pokepro_development
+    volumes:
+      - ./db_dump.tar:/db_dump.tar
+      - ./restore.sh:/docker-entrypoint-initdb.d/restore.sh
+      - db_data:/var/lib/postgresql/data
+  pokepro-app:
+    build: .
     ports:
       - '3001:3001'
-    depends_on:
-      - db
-
-  db:
-    image: 'postgres:13'
     environment:
-      - POSTGRES_USER=myuser
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=pokepro_development
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pokepro_development
+      POSTGRES_HOST: pokepro-db
+    depends_on:
+      - pokepro-db
 
 volumes:
-  postgres-data:
+  db_data:
