@@ -36,6 +36,10 @@
 
 <https://pokepro-backend.herokuapp.com/>
 
+## Dockerhub Image
+
+[Dockerhub](https://hub.docker.com/r/sramalho94/pokepro_backend)
+
 ---
 
 ## Getting Started
@@ -43,6 +47,15 @@
 -`clone` the github repository -`cd` into the root directory of the project
 -run `npm i` to install packages
 -run `npm start` to run the application
+
+---
+
+## Getting Started with Docker Image
+
+- install Install Docker and Docker Compose.
+- `clone` the latest tag of the docker image from Dockerhub.
+- `cd` into the directory
+- start the Docker Compose services by running `docker-compose up`
 
 ---
 
