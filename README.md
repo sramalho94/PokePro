@@ -38,6 +38,14 @@
 
 ---
 
+## Getting Started
+
+-`clone` the github repository -`cd` into the root directory of the project
+-run `npm i` to install packages
+-run `npm start` to run the application
+
+---
+
 ### **_*Technologies*_**
 
 - Front-End
