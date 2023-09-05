@@ -3,3 +3,7 @@ node_modules
 test.js
 test.mjs
 test2.mjs
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
